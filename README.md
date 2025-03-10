@@ -1,0 +1,2 @@
+# visio_deepLearning_block
+计算参数使得visio画深度学习模型图可以准确控制立方体块长宽高
