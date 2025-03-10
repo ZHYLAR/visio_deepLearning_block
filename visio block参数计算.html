@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>计算器</h1>
+        <label for="height">高 (h):</label>
+        <input type="text" id="height" placeholder="输入高">
+
+        <label for="width">宽 (w):</label>
+        <input type="text" id="width" placeholder="输入宽">
+
+        <label for="channel">通道 (c):</label>
+        <input type="text" id="channel" placeholder="输入通道">
+
+        <button onclick="calculate()">计算</button>
+
+        <div class="result">
+            <p id="resultHeight"></p>
+            <p id="resultWidth"></p>
+            <p id="resultP"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            // 获取输入值
+            const h = parseFloat(document.getElementById('height').value);
+            const w = parseFloat(document.getElementById('width').value);
+            const c = parseFloat(document.getElementById('channel').value);
+
+            // 计算逻辑
+            const wAdjusted = w / Math.sqrt(2);
+            const width = c + wAdjusted / Math.sqrt(2);
+            const height = h + wAdjusted / Math.sqrt(2);
+            const P = 1 - wAdjusted / Math.sqrt(2) / height;
+
+            // 显示结果
+            document.getElementById('resultHeight').textContent = `height = ${height.toFixed(2)}`;
+            document.getElementById('resultWidth').textContent = `width = ${width.toFixed(2)}`;
+            document.getElementById('resultP').textContent = `P = ${P.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
